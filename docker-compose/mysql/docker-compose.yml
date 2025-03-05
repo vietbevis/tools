@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:8.0.40-debian
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssword*123
+      MYSQL_DATABASE: blogs_v2
+      MYSQL_USER: vietnguyen
+      MYSQL_PASSWORD: P@ssword*123
+    ports:
+      - "3306:3306"
+    command: mysqld --lower_case_table_names=1
+    volumes:
+      - dbdata:/var/lib/mysql
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    container_name: pma
+#    links:
+#      - db
+#    environment:
+#      PMA_HOST: db
+#      PMA_PORT: 3306
+#      PMA_ARBITRARY: 1
+#      UPLOAD_LIMIT: 500M
+#    restart: always
+#    ports:
+#      - 8099:80
+volumes:
+  dbdata:
